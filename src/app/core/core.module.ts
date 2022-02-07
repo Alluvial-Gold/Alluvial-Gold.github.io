@@ -3,8 +3,8 @@ import { CommonModule } from '@angular/common';
 import { FrameComponent } from './components/frame/frame.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { MaterialModule } from '../material.module';
-import { TestComponent } from './components/test/test.component';
 import { AppRoutingModule } from '../app-routing.module';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 
 
@@ -12,12 +12,12 @@ import { AppRoutingModule } from '../app-routing.module';
   declarations: [
     FrameComponent,
     PageNotFoundComponent,
-    TestComponent
   ],
   imports: [
     CommonModule,
     MaterialModule,
     AppRoutingModule,
+    FlexLayoutModule,
   ],
   exports: [
     FrameComponent,

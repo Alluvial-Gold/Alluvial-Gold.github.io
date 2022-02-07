@@ -1,0 +1,11 @@
+<mat-grid-list cols="2" rowHeight="1:1" style="width: 40px" gutterSize="0px">
+  <mat-grid-tile *ngFor="let rIdx of row.rightPosition | range">
+    <div class="marker right-marker"></div>
+  </mat-grid-tile>
+  <mat-grid-tile *ngFor="let wIdx of row.wrongPosition | range">
+    <div class="marker wrong-marker"></div>
+  </mat-grid-tile>
+  <mat-grid-tile *ngFor="let nIdx of (4 - (row.rightPosition + row.wrongPosition)) | range">
+    <div class="marker none-marker"></div>
+  </mat-grid-tile>
+</mat-grid-list>

@@ -1,0 +1,6 @@
+<p *ngIf="!colourblindMode" [attr.data-colour]="colour">
+  {{ICON}}
+</p>
+<p *ngIf="colourblindMode">
+  {{ EMOJIS[colour] }}
+</p>

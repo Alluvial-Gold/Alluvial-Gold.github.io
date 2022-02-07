@@ -1,0 +1,58 @@
+<div class="wrapper" fxLayout="row">
+
+  <div class="row-wrapper" fxLayout="column" fxLayoutGap="8px">
+    <div *ngFor="let row of rows">
+      <app-mm-row
+        [row]="row"
+        [colourblindMode]="isColourblindMode">
+      </app-mm-row> 
+    </div>
+  </div>
+
+  <div class="side-wrapper" fxFlex fxLayout="column" fxLayoutAlign="start center" fxLayoutGap="16px">
+
+    <mat-grid-list cols="3" rowHeight="50px" style="width: 150px">
+      <mat-grid-tile *ngFor="let colour of colourChoices">
+        <button mat-button (click)="enterGuess(colour)">
+          <app-mm-icon [colour]="colour" [colourblindMode]="isColourblindMode"></app-mm-icon>
+        </button>
+      </mat-grid-tile>
+    </mat-grid-list>
+
+
+    <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="8px">
+      <button mat-raised-button color="primary" (click)="removeGuess()">
+        Remove
+      </button>
+  
+      <button mat-raised-button color="primary" (click)="checkGuess()">
+        Check
+      </button>
+    </div>
+
+
+    <div fxLayout="row" *ngIf="showAnswer">
+      <app-mm-icon *ngFor="let g of answer" [colour]="g" [colourblindMode]="isColourblindMode"></app-mm-icon>
+    </div>
+
+    <div *ngIf="message.length > 0">
+      {{ message }}
+    </div>
+
+    <div *ngIf="isEnd">
+      <button mat-raised-button color="primary" (click)="reset()">
+        Reset
+      </button>
+    </div>
+
+    <div>
+      <mat-slide-toggle [(ngModel)]="isColourblindMode">
+        Colourblind mode
+      </mat-slide-toggle>
+    </div>
+  </div>
+
+</div>
+
+
+

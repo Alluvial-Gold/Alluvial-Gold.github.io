@@ -1,0 +1,28 @@
+*[data-colour=red] {
+  filter: hue-rotate(260deg);
+}
+
+*[data-colour=orange] {
+  filter: hue-rotate(300deg);
+}
+
+*[data-colour=yellow] {
+  filter: hue-rotate(340deg);
+}
+
+*[data-colour=green] {
+  filter: hue-rotate(45deg);
+}
+
+*[data-colour=blue] {
+  filter: hue-rotate(140deg);
+}
+
+*[data-colour="purple"] {
+  filter: hue-rotate(180deg);
+}
+
+p {
+  font-size: 2em;
+  margin: 0px;
+}

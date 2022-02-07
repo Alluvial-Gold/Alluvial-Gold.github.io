@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TestComponent } from './test.component';
+import { MmCheckComponent } from './mm-check.component';
 
-describe('TestComponent', () => {
-  let component: TestComponent;
-  let fixture: ComponentFixture<TestComponent>;
+describe('MmCheckComponent', () => {
+  let component: MmCheckComponent;
+  let fixture: ComponentFixture<MmCheckComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TestComponent ]
+      declarations: [ MmCheckComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(TestComponent);
+    fixture = TestBed.createComponent(MmCheckComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
