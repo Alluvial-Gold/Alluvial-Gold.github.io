@@ -1,0 +1,126 @@
+// http://mcg.mbitson.com/#!?mcgpalette0=%233f51b5
+
+// Primary
+$theme-primary: (
+    50 : #e3e8ee,
+    100 : #b9c6d4,
+    200 : #8ba1b8,
+    300 : #5c7b9c,
+    400 : #395e86,
+    500 : #164271,
+    600 : #133c69,
+    700 : #10335e,
+    800 : #0c2b54,
+    900 : #061d42,
+    A100 : #78a4ff,
+    A200 : #4581ff,
+    A400 : #125fff,
+    A700 : #0050f7,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #ffffff,
+        400 : #ffffff,
+        500 : #ffffff,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #ffffff,
+        A400 : #ffffff,
+        A700 : #ffffff,
+    )
+);
+
+
+// Accent
+$theme-accent: (
+    50 : #fbf7ec,
+    100 : #f6ebcf,
+    200 : #f0ddb0,
+    300 : #eacf90,
+    400 : #e6c578,
+    500 : #e1bb60,
+    600 : #ddb558,
+    700 : #d9ac4e,
+    800 : #d5a444,
+    900 : #cd9633,
+    A100 : #ffffff,
+    A200 : #fff3e0,
+    A400 : #ffe0ad,
+    A700 : #ffd794,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #000000,
+        500 : #000000,
+        600 : #000000,
+        700 : #000000,
+        800 : #000000,
+        900 : #000000,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
+);
+
+$theme-warn: (
+    50 : #fbeceb,
+    100 : #f6d0cd,
+    200 : #f0b1ac,
+    300 : #e9918a,
+    400 : #e57a71,
+    500 : #e06258,
+    600 : #dc5a50,
+    700 : #d85047,
+    800 : #d3463d,
+    900 : #cb342d,
+    A100 : #ffffff,
+    A200 : #ffdbda,
+    A400 : #ffaaa7,
+    A700 : #ff928d,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #000000,
+        500 : #000000,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
+);
+
+
+
+@use '~@angular/material' as mat;
+
+
+// Define palettes
+$alluvial-gold-primary: mat.define-palette($theme-primary);
+$alluvial-gold-accent: mat.define-palette($theme-accent);
+
+// The warn palette is optional (defaults to red).
+$alluvial-gold-warn: mat.define-palette($theme-warn);
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$alluvial-gold-theme: mat.define-light-theme((
+  color: (
+    primary: $alluvial-gold-primary,
+    accent: $alluvial-gold-accent,
+    warn: $alluvial-gold-warn,
+  )
+));
+
