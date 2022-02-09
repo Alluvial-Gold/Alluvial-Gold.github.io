@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { COLOURS } from '../../mastermind.models';
+import { MatDialog } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { COLOURS, MastermindSettings } from '../../mastermind.models';
+import { MmHelpComponent } from '../mm-help/mm-help.component';
 import { Row } from '../mm-row/mm-row.component';
+import { MmSettingsComponent } from '../mm-settings/mm-settings.component';
 
 @Component({
   selector: 'app-mm-board',
@@ -9,26 +13,29 @@ import { Row } from '../mm-row/mm-row.component';
 })
 export class MmBoardComponent implements OnInit {
 
-  rows: Row[] = [];
-
-  // answer
-  answerRow: Row = new Row;
-
-  // Current position
-  currentRow: number = 0;
-
   colourChoices = Object.values(COLOURS);
   maxGuesses = 10;
+  messageDurationMs = 2000;
+
+  // Answer
+  answerRow: Row = new Row;
+
+  // Guesses
+  rows: Row[] = [];
+
+  currentRow: number = 0;
 
   isEnd = false;
   showAnswer = false;
-  message = '';
 
-  // Settings...
-  // TODO
-  isColourblindMode = false;
+  settings: MastermindSettings;
 
-  constructor() { }
+  constructor(public dialog: MatDialog, private snackbar: MatSnackBar) {
+    // TODO - get from local storage
+    this.settings = {
+      isColourblindMode: false
+    };
+  }
 
   ngOnInit(): void {
     this.reset();
@@ -48,7 +55,8 @@ export class MmBoardComponent implements OnInit {
 
     this.isEnd = false;
     this.showAnswer = false;
-    this.message = '';
+
+    this.snackbar.dismiss();
 
     // Generate answer
     this.generateCode();
@@ -62,13 +70,14 @@ export class MmBoardComponent implements OnInit {
     }
 
     this.answerRow = new Row(answerValues);
+    this.answerRow.rightPosition = 4;
   }
 
   enterGuess(guess: COLOURS) {
     if (this.isEnd) {
       return;
     }
-    this.message = '';
+    this.snackbar.dismiss();
 
     let currentRow = this.rows[this.currentRow];
     currentRow.addGuess(guess);
@@ -78,7 +87,7 @@ export class MmBoardComponent implements OnInit {
     if (this.isEnd) {
       return;
     }
-    this.message = '';
+    this.snackbar.dismiss();
 
     let currentRow = this.rows[this.currentRow];
     currentRow.removeGuess();
@@ -88,26 +97,42 @@ export class MmBoardComponent implements OnInit {
     if (this.isEnd) {
       return;
     }
-    this.message = '';
+    this.snackbar.dismiss();
 
     let isValid = this.rows[this.currentRow].checkGuesses(this.answerRow.guesses);
 
     if (isValid) {
       if (this.rows[this.currentRow].rightPosition === 4) {
-        this.message = "Correct!"
+        this.showMessage("Correct!");
         this.showAnswer = true;
         this.isEnd = true;
       } else {
         this.currentRow++;
         if (this.currentRow === this.maxGuesses) {
-          this.message = "Out of turns!";
+          this.showMessage("Out of turns!");
           this.showAnswer = true;
           this.isEnd = true;
         }
       }
     } else {
-      this.message = "Row is not full"
+      this.showMessage("Row is not full");
     }
+  }
+
+  openHelp() {
+    this.dialog.open(MmHelpComponent, { width: '300px' });
+  }
+
+  openSettings() {
+    this.dialog.open(MmSettingsComponent, { width: '300px', data: this.settings });
+  }
+
+  showMessage(message: string) {
+    this.snackbar.open(message, '', {
+      horizontalPosition: 'center',
+      verticalPosition: 'top',
+      duration: this.messageDurationMs
+    });
   }
 
 }

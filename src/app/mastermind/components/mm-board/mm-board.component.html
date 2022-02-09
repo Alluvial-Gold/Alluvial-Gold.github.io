@@ -4,7 +4,7 @@
     <div *ngFor="let row of rows">
       <app-mm-row
         [row]="row"
-        [colourblindMode]="isColourblindMode">
+        [colourblindMode]="settings.isColourblindMode">
       </app-mm-row> 
     </div>
 
@@ -13,7 +13,7 @@
       <div [ngClass]="{'hide-footer': !showAnswer}" style="padding: 10px 0px">
         <app-mm-row 
           [row]="answerRow"
-          [colourblindMode]="isColourblindMode">
+          [colourblindMode]="settings.isColourblindMode">
         </app-mm-row> 
       </div>
     </mat-card-footer>
@@ -24,10 +24,21 @@
   <div class="side-wrapper" fxFlex fxLayout="column" fxLayoutAlign="start center" fxLayoutGap="16px">
 
     <mat-card fxLayout="column" fxLayoutAlign="start center" fxLayoutGap="16px">
+
+      <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="8px">
+        <button mat-icon-button color="primary" (click)="openHelp()">
+          <mat-icon>help</mat-icon>
+        </button>
+    
+        <button mat-icon-button color="primary" (click)="openSettings()">
+          <mat-icon>settings</mat-icon>
+        </button>
+      </div>
+
       <mat-grid-list cols="3" rowHeight="50px" style="width: 150px">
         <mat-grid-tile *ngFor="let colour of colourChoices">
           <button mat-button (click)="enterGuess(colour)">
-            <app-mm-icon [colour]="colour" [colourblindMode]="isColourblindMode"></app-mm-icon>
+            <app-mm-icon [colour]="colour" [colourblindMode]="settings.isColourblindMode"></app-mm-icon>
           </button>
         </mat-grid-tile>
       </mat-grid-list>
@@ -44,28 +55,12 @@
 
       <div *ngIf="isEnd" fxLayout="row" fxLayoutAlign="center center">
         <button mat-raised-button color="primary" (click)="reset()">
-          Reset
+          New game
         </button>
       </div>
     
     </mat-card>
 
-
-
-
-
-
-
-    <div *ngIf="message.length > 0">
-      {{ message }}
-    </div>
-
-
-    <div>
-      <mat-slide-toggle [(ngModel)]="isColourblindMode">
-        Colourblind mode
-      </mat-slide-toggle>
-    </div>
   </div>
 
 </div>

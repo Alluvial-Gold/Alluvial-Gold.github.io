@@ -8,6 +8,8 @@ import { RangePipe } from './pipes/range.pipe';
 import { MaterialModule } from '../material.module';
 import { FormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { MmHelpComponent } from './components/mm-help/mm-help.component';
+import { MmSettingsComponent } from './components/mm-settings/mm-settings.component';
 
 
 
@@ -17,7 +19,9 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     MmCheckComponent,
     MmIconComponent,
     MmRowComponent,
-    RangePipe
+    RangePipe,
+    MmHelpComponent,
+    MmSettingsComponent
   ],
   imports: [
     CommonModule,

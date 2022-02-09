@@ -17,3 +17,7 @@ export const EMOJIS = {
   [COLOURS.BLUE]: '🐍',
   [COLOURS.PURPLE]: '🐊',
 }
+
+export interface MastermindSettings {
+  isColourblindMode: boolean;
+}
