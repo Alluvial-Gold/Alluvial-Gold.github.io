@@ -12,7 +12,7 @@ export class MmBoardComponent implements OnInit {
   rows: Row[] = [];
 
   // answer
-  answer: COLOURS[] = [];
+  answerRow: Row = new Row;
 
   // Current position
   currentRow: number = 0;
@@ -55,11 +55,13 @@ export class MmBoardComponent implements OnInit {
   }
 
   generateCode() {
-    this.answer = [];
+    let answerValues = [];
     for (let i = 0; i < 4; i++) {
       const randomIdx = Math.floor(Math.random() * this.colourChoices.length)
-      this.answer.push(this.colourChoices[randomIdx]);
+      answerValues.push(this.colourChoices[randomIdx]);
     }
+
+    this.answerRow = new Row(answerValues);
   }
 
   enterGuess(guess: COLOURS) {
@@ -70,8 +72,6 @@ export class MmBoardComponent implements OnInit {
 
     let currentRow = this.rows[this.currentRow];
     currentRow.addGuess(guess);
-
-    console.log(this.rows);
   }
 
   removeGuess() {
@@ -90,7 +90,7 @@ export class MmBoardComponent implements OnInit {
     }
     this.message = '';
 
-    let isValid = this.rows[this.currentRow].checkGuesses(this.answer);
+    let isValid = this.rows[this.currentRow].checkGuesses(this.answerRow.guesses);
 
     if (isValid) {
       if (this.rows[this.currentRow].rightPosition === 4) {

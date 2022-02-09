@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Row } from '../mm-row/mm-row.component';
 
 @Component({
@@ -6,20 +6,10 @@ import { Row } from '../mm-row/mm-row.component';
   templateUrl: './mm-check.component.html',
   styleUrls: ['./mm-check.component.scss']
 })
-export class MmCheckComponent implements OnInit, OnChanges {
+export class MmCheckComponent {
 
   @Input() row!: Row;
 
-  things: string[] = [];
-
   constructor() { }
-
-  ngOnInit(): void {
-  }
-
-  ngOnChanges(changes: SimpleChanges): void {
-    console.log('changes!');
-    this.things = ['white', 'black', 'none', 'none'];
-  }
 
 }

@@ -1,12 +1,22 @@
 <div fxLayout="row" fxLayoutGap="8px">
 
-  <div fxLayout="row" fxLayoutAlign="space-around center" class="row" [ngClass]="{'done-row': row.checked}">
-    <div *ngFor="let idx of idxs" class="choice" fxLayoutAlign="center center">
-      <app-mm-icon *ngIf="row.guesses.length > idx" [colour]="row.guesses[idx]" [colourblindMode]="colourblindMode"></app-mm-icon>
+  <div  fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="8px">
+    <div 
+      *ngFor="let idx of idxs"
+      fxLayoutAlign="center center"
+      fxLayoutGap="8px"
+      class="choice"
+      [ngClass]="{'checked-choice': row.checked}"
+    >
+      <app-mm-icon 
+        *ngIf="row.guesses.length > idx"
+        [colour]="row.guesses[idx]"
+        [colourblindMode]="colourblindMode"
+      ></app-mm-icon>
     </div>
   </div>
-  
-  <div fxLayoutAlign="center center" class="row-check" [ngClass]="{'done-row-check': row.checked}">
+
+  <div>
     <app-mm-check [row]="row"></app-mm-check>
   </div>
   

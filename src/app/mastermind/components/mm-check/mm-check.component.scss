@@ -1,6 +1,8 @@
+$grey: rgb(206, 206, 206); // TODO get from theme?
+
 .marker {
-  width: 15px;
-  height: 15px;
+  width: 16px;
+  height: 16px;
   border-radius: 100%;
 }
 
@@ -14,4 +16,13 @@
 
 .none-marker {
   background-color: transparent;
+}
+
+mat-grid-tile {
+  border: 1px solid $grey;
+  border-radius: 4px;
+}
+
+.checked mat-grid-tile {
+  background-color: $grey;
 }

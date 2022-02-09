@@ -27,8 +27,8 @@ export class Row {
   wrongPosition: number;
   checked: boolean;
 
-  constructor() {
-    this.guesses = [],
+  constructor(guesses: COLOURS[] = []) {
+    this.guesses = guesses,
     this.rightPosition = 0;
     this.wrongPosition = 0;
     this.checked = false;
